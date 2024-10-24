@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Management Services</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: #13293d; /* Dark Blue */
+            color: #fff; /* White text for contrast */
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #3e92cc; /* Light Blue */
+            transition: color 0.3s ease;
+        }
+        #country-select {
+            width: 100%;
+            padding: 10px;
+            margin: 20px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        #disaster-management-services {
+            animation: fadeIn 0.5s ease;
+            margin-bottom: 20px;
+        }
+        #map {
+            width: 100%;
+            height: 450px; /* Height adjusted for better visibility */
+            border: 0;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        #loading {
+            display: none;
+            text-align: center;
+            font-size: 18px;
+            color: #3e92cc;
+        }
+    </style>
+</head>
+<body>
+    <h2>Select a Country for Disaster Management Services</h2>
+    <select id="country-select" onchange="showDisasterManagementServices()">
+        <option value="">-- Select Country --</option>
+        <option value="USA">USA</option>
+        <option value="UK">UK</option>
+        <option value="Canada">Canada</option>
+        <option value="Australia">Australia</option>
+        <option value="Germany">Germany</option>
+        <option value="France">France</option>
+        <option value="India">India</option>
+        <option value="Japan">Japan</option>
+        <option value="Brazil">Brazil</option>
+        <option value="Mexico">Mexico</option>
+        <option value="South Africa">South Africa</option>
+        <option value="New Zealand">New Zealand</option>
+    </select>
+
+    <div id="loading">Loading services...</div>
+    <div id="disaster-management-services"></div>
+    <div id="map"></div>
+
+    <script>
+        function showDisasterManagementServices() {
+            const country = document.getElementById('country-select').value;
+            const servicesDiv = document.getElementById('disaster-management-services');
+            const mapDiv = document.getElementById('map');
+            const loadingDiv = document.getElementById('loading');
+            let servicesHtml = '';
+            let mapSrc = '';
+
+            loadingDiv.style.display = 'block'; // Show loading indicator
+            servicesDiv.innerHTML = ''; // Clear previous services
+            mapDiv.innerHTML = ''; // Clear previous map
+
+            setTimeout(() => {
+                // Example service data based on the selected country
+                if (country === 'USA') {
+                    servicesHtml = `
+                        <h2>Available Disaster Management Services in the USA</h2>
+                        <ul>
+                            <li><strong>FEMA (Federal Emergency Management Agency)</strong>: (800) 621-3362 <a href="https://www.fema.gov/" target="_blank" style="color: #3e92cc;">(Website)</a></li>
+                            <li><strong>American Red Cross</strong>: (800) 733-2767 <a href="https://www.redcross.org/" target="_blank" style="color: #3e92cc;">(Website)</a></li>
+                            <li><strong>National Voluntary Organizations Active in Disaster (NVOAD)</strong>: (202) 558-3991 <a href="https://www.nvoad.org/" target="_blank" style="color: #3e92cc;">(Website)</a></li>
+                        </ul>`;
+                    mapSrc = `
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d51331309.11864765!2d-171.32957186663185!3d38.25597038207342!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sdisaster%20management%20usa!5e0!3m2!1sen!2sin!4v1728838886434!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
+                } else if (country === 'UK') {
+                    servicesHtml = `
+                        <h2>Available Disaster Management Services in the UK</h2>
+                        <ul>
+                            <li><strong>National Emergencies Trust</strong>: 0800 458 8365 <a href="https://www.nationalemergenciestrust.org.uk/" target="_blank" style="color: #3e92cc;">(Website)</a></li>
+                            <li><strong>British Red Cross</strong>: 0344 871 1111 <a href="https://www.redcross.org.uk/" target="_blank" style="color: #3e92cc;">(Website)</a></li>
+                            <li><strong>Rescue Services</strong>: 0800 555 181</li>
+                        </ul>`;
+                    mapSrc = `
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d2456353.5722097843!2d-4.0637033820751105!3d53.0422410604402!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sdisaster%20uk!5e0!3m2!1sen!2sin!4v1728838928484!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
+                } else if (country === 'Canada') {
+                    servicesHtml = `
+                        <h2>Available Disaster Management Services in Canada</h2>
+                        <ul>
+                            <li><strong>Public Safety Canada</strong>: 1-800-830-3118 <a href="https://www.publicsafety.gc.ca/" target="_blank" style="color: #3e92cc;">(Website)</a></li>
+                            <li><strong>Canadian Red Cross</strong>: 1-800-418-1111 <a href="https://www.redcross.ca/" target="_blank" style="color: #3e92cc;">(Website)</a></li>
+                        </ul>`;
+                    mapSrc = `
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d144921.3749683537!2d-120.89749203734593!3d56.173785979255404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sdisaster%20management%20canada!5e0!3m2!1sen!2sin!4v1728838952871!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
+                } else if (country === 'Australia') {
+                    servicesHtml = `
+                        <h2>Available Disaster Management Services in Australia</h2>
+                        <ul>
+                            <li><strong>Emergency Management Australia</strong>: 02 6256 7777 <a href="https://www.homeaffairs.gov.au/about-us/our-portfolios/emergency-management" target="_blank" style="color: #3e92cc;">(Website)</a></li>
+                            <li><strong>Australian Red Cross</strong>: 1800 733 276 <a href="https://www.redcross.org.au/" target="_blank" style="color: #3e92cc;">(Website)</a></li>
+                        </ul>`;
+                    mapSrc = `
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d16809474.883641194!2d112.98200824553063!3d-25.0967487341878!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sdisaster%20management%20australia!5e0!3m2!1sen!2sin!4v1728838997168!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
+                } else if (country === 'Germany') {
+                    servicesHtml = `
+                        <h2>Available Disaster Management Services in Germany</h2>
+                        <ul>
+                            <li><strong>Federal Agency for Technical Relief (THW)</strong>: 112 <a href="https://www.thw.de/en/startseite/" target="_blank" style="color: #3e92cc;">(Website)</a></li>
+                            <li><strong>German Red Cross</strong>: 0800 112 233 <a href="https://www.drk.de/en/" target="_blank" style="color: #3e92cc;">(Website)</a></li>
+                        </ul>`;
+                    mapSrc = `
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d1268795.0259442452!2d8.420895320982879!3d51.22504458278576!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sdisaster%20management%20germany!5e0!3m2!1sen!2sin!4v1728839022175!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
+                } else if (country === 'France') {
+                    servicesHtml = `
+                        <h2>Available Disaster Management Services in France</h2>
+                        <ul>
+                            <li><strong>French Civil Security</strong>: 18 <a href="https://www.interieur.gouv.fr/actualites/communiques/2020/assistance-a-la-population" target="_blank" style="color: #3e92cc;">(Website)</a></li>
+                            <li><strong>French Red Cross</strong>: 0 800 858 858 <a href="https://www.croix-rouge.fr/" target="_blank" style="color: #3e92cc;">(Website)</a></li>
+                        </ul>`;
+                    mapSrc = `
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d1634798.2897587543!2d-5.096903297067977!3d46.639554333655536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sdisaster%20management%20france!5e0!3m2!1sen!2sin!4v1728839050205!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
+                } else if (country === 'India') {
+                    servicesHtml = `
+                        <h2>Available Disaster Management Services in India</h2>
+                        <ul>
+                            <li><strong>National Disaster Management Authority</strong>: 1800 11 5050 <a href="https://ndma.gov.in/" target="_blank" style="color: #3e92cc;">(Website)</a></li>
+                            <li><strong>Indian Red Cross Society</strong>: 1911 <a href="https://www.indianredcross.org/" target="_blank" style="color: #3e92cc;">(Website)</a></li>
+                        </ul>`;
+                    mapSrc = `
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d2531630.535766772!2d78.96288320054721!3d20.593684600775024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sdisaster%20management%20india!5e0!3m2!1sen!2sin!4v1728839073906!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
+                } else if (country === 'Japan') {
+                    servicesHtml = `
+                        <h2>Available Disaster Management Services in Japan</h2>
+                        <ul>
+                            <li><strong>Japan Meteorological Agency</strong>: 03-3211-6727 <a href="https://www.jma.go.jp/jma/indexe.html" target="_blank" style="color: #3e92cc;">(Website)</a></li>
+                            <li><strong>Japanese Red Cross Society</strong>: 03-5273-1000 <a href="https://www.jrc.or.jp/english/" target="_blank" style="color: #3e92cc;">(Website)</a></li>
+                        </ul>`;
+                    mapSrc = `
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d327980.9299043139!2d138.2529245091015!3d36.20482408041962!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sdisaster%20management%20japan!5e0!3m2!1sen!2sin!4v1728839096394!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
+                } else if (country === 'Brazil') {
+                    servicesHtml = `
+                        <h2>Available Disaster Management Services in Brazil</h2>
+                        <ul>
+                            <li><strong>Brazilian Civil Defense</strong>: 193 <a href="http://www.defesacivil.gov.br/" target="_blank" style="color: #3e92cc;">(Website)</a></li>
+                            <li><strong>Brazilian Red Cross</strong>: 0800 570 1234 <a href="https://www.correios.com.br/" target="_blank" style="color: #3e92cc;">(Website)</a></li>
+                        </ul>`;
+                    mapSrc = `
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d6631583.314856579!2d-73.12322623031336!3d-14.235004218068444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sdisaster%20management%20brazil!5e0!3m2!1sen!2sin!4v1728839127121!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
+                } else if (country === 'Mexico') {
+                    servicesHtml = `
+                        <h2>Available Disaster Management Services in Mexico</h2>
+                        <ul>
+                            <li><strong>National Civil Protection</strong>: 800 733 7666 <a href="https://www.gob.mx/pc/" target="_blank" style="color: #3e92cc;">(Website)</a></li>
+                            <li><strong>Mexican Red Cross</strong>: 800 822 3737 <a href="https://cruzrojamexicana.org.mx/" target="_blank" style="color: #3e92cc;">(Website)</a></li>
+                        </ul>`;
+                    mapSrc = `
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d7106023.448802695!2d-118.52004789616167!3d23.63450137904426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sdisaster%20management%20mexico!5e0!3m2!1sen!2sin!4v1728839150732!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
+                } else if (country === 'South Africa') {
+                    servicesHtml = `
+                        <h2>Available Disaster Management Services in South Africa</h2>
+                        <ul>
+                            <li><strong>Disaster Management Centre</strong>: 0800 222 333 <a href="https://www.cogta.gov.za/" target="_blank" style="color: #3e92cc;">(Website)</a></li>
+                            <li><strong>South African Red Cross</strong>: 0860 222 770 <a href="https://www.redcross.org.za/" target="_blank" style="color: #3e92cc;">(Website)</a></li>
+                        </ul>`;
+                    mapSrc = `
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d6406282.694537227!2d16.482453165182163!3d-29.66824395350648!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sdisaster%20management%20south%20africa!5e0!3m2!1sen!2sin!4v1728839184300!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
+                } else if (country === 'New Zealand') {
+                    servicesHtml = `
+                        <h2>Available Disaster Management Services in New Zealand</h2>
+                        <ul>
+                            <li><strong>Emergency Management New Zealand</strong>: 04 473 2715 <a href="https://www.civildefence.govt.nz/" target="_blank" style="color: #3e92cc;">(Website)</a></li>
+                            <li><strong>New Zealand Red Cross</strong>: 0800 733 276 <a href="https://www.redcross.org.nz/" target="_blank" style="color: #3e92cc;">(Website)</a></li>
+                        </ul>`;
+                    mapSrc = `
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d4443290.552828965!2d166.07415523930555!3d-40.900557989829056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sdisaster%20management%20new%20zealand!5e0!3m2!1sen!2sin!4v1728839202154!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
+                } else {
+                    servicesHtml = '<h2>Please select a valid country.</h2>';
+                }
+
+                servicesDiv.innerHTML = servicesHtml; // Update the services div
+                mapDiv.innerHTML = mapSrc; // Update the map div
+                loadingDiv.style.display = 'none'; // Hide loading indicator
+            }, 500); // Simulate a delay for loading
+        }
+    </script>
+</body>
+</html>

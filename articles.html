@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Management Articles</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: #13293d; /* Dark Blue */
+            color: #fff; /* White text for contrast */
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #3e92cc; /* Light Blue */
+        }
+        .article {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #3e92cc; /* Light Blue */
+            border-radius: 5px;
+            background-color: #1a374d; /* Darker Blue for articles */
+        }
+        h3 {
+            color: #3e92cc; /* Light Blue */
+        }
+        p {
+            color: #ffffff; /* White text */
+        }
+        button {
+            background-color: #3e92cc; /* Light Blue */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #2a6f8f; /* Darker Blue on hover */
+        }
+        .details {
+            display: none; /* Hide details by default */
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #2c3e50; /* Darker background for details */
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Emergency Management Articles</h2>
+
+    <div id="articles-container">
+        <div class="article">
+            <h3>How to Manage When a Sudden Fire Occurs</h3>
+            <p>In the event of a sudden fire, it’s crucial to remain calm. Follow these steps:</p>
+            <button onclick="toggleDetails('fire-details')">Read More</button>
+            <div id="fire-details" class="details">
+                <p>1. Activate the nearest fire alarm.</p>
+                <p>2. Evacuate the building immediately.</p>
+                <p>3. Do not use elevators; use stairs instead.</p>
+                <p>4. If trapped, seal doors with clothing and signal for help.</p>
+                <p>Always prioritize safety and contact emergency services.</p>
+            </div>
+        </div>
+
+        <div class="article">
+            <h3>Understanding Different Types of Physical Trauma</h3>
+            <p>Physical trauma can result from accidents, falls, or violence. Here’s how to handle it:</p>
+            <button onclick="toggleDetails('trauma-details')">Read More</button>
+            <div id="trauma-details" class="details">
+                <p>1. Assess the injury and seek immediate medical attention if severe.</p>
+                <p>2. For minor injuries, apply first aid and monitor the condition.</p>
+                <p>3. Know the signs of shock and how to manage it.</p>
+                <p>Being prepared can save lives.</p>
+            </div>
+        </div>
+
+        <div class="article">
+            <h3>How to Be Prepared for a Disaster</h3>
+            <p>Preparation is key for disaster management. Consider the following:</p>
+            <button onclick="toggleDetails('disaster-details')">Read More</button>
+            <div id="disaster-details" class="details">
+                <p>1. Create an emergency plan with your family.</p>
+                <p>2. Prepare an emergency kit with food, water, and essentials.</p>
+                <p>3. Stay informed about potential hazards in your area.</p>
+                <p>Regular drills can help ensure everyone knows what to do.</p>
+            </div>
+        </div>
+
+        <div class="article">
+            <h3>Taking Care of Your Mental Health</h3>
+            <p>Mental health is vital during emergencies. Here are some tips:</p>
+            <button onclick="toggleDetails('mental-health-details')">Read More</button>
+            <div id="mental-health-details" class="details">
+                <p>1. Practice mindfulness and relaxation techniques.</p>
+                <p>2. Stay connected with loved ones for support.</p>
+                <p>3. Seek professional help if needed.</p>
+                <p>Remember, it's okay to ask for help.</p>
+            </div>
+        </div>
+
+        <div class="article">
+            <h3>Preparing Your Pets for Emergencies</h3>
+            <p>Ensure your pets are safe during emergencies.</p>
+            <button onclick="toggleDetails('pets-details')">Read More</button>
+            <div id="pets-details" class="details">
+                <p>1. Create an emergency kit for your pets.</p>
+                <p>2. Plan for their evacuation in case of a disaster.</p>
+                <p>3. Keep their medical records handy.</p>
+            </div>
+        </div>
+
+        <div class="article">
+            <h3>Handling Mental Stress After a Disaster</h3>
+            <p>Mental well-being is crucial after any crisis.</p>
+            <button onclick="toggleDetails('stress-details')">Read More</button>
+            <div id="stress-details" class="details">
+                <p>1. Talk about your feelings with someone you trust.</p>
+                <p>2. Seek professional help if feelings persist.</p>
+                <p>3. Engage in activities that promote relaxation.</p>
+            </div>
+        </div>
+
+        <div class="article">
+            <h3>Understanding Emergency Shelters</h3>
+            <p>Know what to expect in an emergency shelter.</p>
+            <button onclick="toggleDetails('shelter-details')">Read More</button>
+            <div id="shelter-details" class="details">
+                <p>1. Bring your essential supplies (food, water, medication).</p>
+                <p>2. Be prepared to share space with others.</p>
+                <p>3. Follow the shelter staff’s instructions.</p>
+            </div>
+        </div>
+
+        <div class="article">
+            <h3>Importance of Community Preparedness</h3>
+            <p>Communities play a vital role in disaster response.</p>
+            <button onclick="toggleDetails('community-details')">Read More</button>
+            <div id="community-details" class="details">
+                <p>1. Form a community response team.</p>
+                <p>2. Conduct regular training and drills.</p>
+                <p>3. Share resources and information.</p>
+            </div>
+        </div>
+
+        <div class="article">
+            <h3>How to Handle Cyber Emergencies</h3>
+            <p>Stay safe from online threats and cyber emergencies.</p>
+            <button onclick="toggleDetails('cyber-details')">Read More</button>
+            <div id="cyber-details" class="details">
+                <p>1. Use strong, unique passwords for accounts.</p>
+                <p>2. Be cautious of suspicious emails and links.</p>
+                <p>3. Keep software updated to avoid vulnerabilities.</p>
+            </div>
+        </div>
+
+        <div class="article">
+            <h3>Basic Skills for Emergency Response</h3>
+            <p>Learn essential skills for responding to emergencies.</p>
+            <button onclick="toggleDetails('skills-details')">Read More</button>
+            <div id="skills-details" class="details">
+                <p>1. Basic first aid and CPR.</p>
+                <p>2. Fire extinguisher use.</p>
+                <p>3. How to conduct a search and rescue.</p>
+            </div>
+        </div>
+
+        <div class="article">
+            <h3>Recognizing Signs of Heart Attack</h3>
+            <p>Early recognition can save lives.</p>
+            <button onclick="toggleDetails('heart-attack-details')">Read More</button>
+            <div id="heart-attack-details" class="details">
+                <p>1. Chest pain or discomfort.</p>
+                <p>2. Shortness of breath or nausea.</p>
+                <p>3. Seek immediate medical help if symptoms appear.</p>
+            </div>
+        </div>
+
+        <div class="article">
+            <h3>Managing Allergic Reactions</h3>
+            <p>Know how to respond to severe allergic reactions.</p>
+            <button onclick="toggleDetails('allergic-details')">Read More</button>
+            <div id="allergic-details" class="details">
+                <p>1. Identify the allergen and remove it.</p>
+                <p>2. Use an EpiPen if available.</p>
+                <p>3. Seek medical help if symptoms worsen.</p>
+            </div>
+        </div>
+
+        <div class="article">
+            <h3>Preparing for Flooding</h3>
+            <p>Stay safe by being prepared for floods.</p>
+            <button onclick="toggleDetails('flood-details')">Read More</button>
+            <div id="flood-details" class="details">
+                <p>1. Create an emergency kit with essentials.</p>
+                <p>2. Know your evacuation routes.</p>
+                <p>3. Move to higher ground if necessary.</p>
+            </div>
+        </div>
+
+        <div class="article">
+            <h3>Responding to Chemical Spills</h3>
+            <p>Understand the steps to take during a chemical spill.</p>
+            <button onclick="toggleDetails('chemical-details')">Read More</button>
+            <div id="chemical-details" class="details">
+                <p>1. Evacuate the area immediately.</p>
+                <p>2. Follow local emergency protocols.</p>
+                <p>3. Report the incident to authorities.</p>
+            </div>
+        </div>
+
+        <div class="article">
+            <h3>How to Stay Informed During Emergencies</h3>
+            <p>Stay updated with the latest information during a crisis.</p>
+            <button onclick="toggleDetails('informed-details')">Read More</button>
+            <div id="informed-details" class="details">
+                <p>1. Monitor local news channels and websites.</p>
+                <p>2. Use emergency alert systems.</p>
+                <p>3. Follow official social media accounts for updates.</p>
+            </div>
+        </div>
+
+        <div class="article">
+            <h3>Responding to Medical Emergencies</h3>
+            <p>Be prepared for various medical emergencies.</p>
+            <button onclick="toggleDetails('medical-details')">Read More</button>
+            <div id="medical-details" class="details">
+                <p>1. Assess the situation and ensure your safety.</p>
+                <p>2. Call for professional help if needed.</p>
+                <p>3. Provide necessary first aid until help arrives.</p>
+            </div>
+        </div>
+
+        <div class="article">
+            <h3>Understanding the Signs of Mental Health Crisis</h3>
+            <p>Recognize signs indicating someone may need help.</p>
+            <button onclick="toggleDetails('mental-crisis-details')">Read More</button>
+            <div id="mental-crisis-details" class="details">
+                <p>1. Changes in behavior or mood.</p>
+                <p>2. Withdrawal from social interactions.</p>
+                <p>3. Expressing feelings of hopelessness.</p>
+            </div>
+        </div>
+
+        <div class="article">
+            <h3>Planning for Family Reunification After a Disaster</h3>
+            <p>Ensure your family can reunite after an emergency.</p>
+            <button onclick="toggleDetails('reunification-details')">Read More</button>
+            <div id="reunification-details" class="details">
+                <p>1. Establish a meeting point in case of evacuation.</p>
+                <p>2. Keep a list of emergency contacts.</p>
+                <p>3. Regularly review and update your plan.</p>
+            </div>
+        </div>
+
+        <div class="article">
+            <h3>Importance of CPR Training</h3>
+            <p>CPR can save lives in emergencies.</p>
+            <button onclick="toggleDetails('cpr-details')">Read More</button>
+            <div id="cpr-details" class="details">
+                <p>1. Learn the proper techniques for CPR.</p>
+                <p>2. Take a certified CPR course.</p>
+                <p>3. Regularly refresh your skills.</p>
+            </div>
+        </div>
+
+        <div class="article">
+            <h3>Understanding the Role of Emergency Medical Technicians (EMTs)</h3>
+            <p>Learn about the responsibilities of EMTs.</p>
+            <button onclick="toggleDetails('emt-details')">Read More</button>
+            <div id="emt-details" class="details">
+                <p>1. Provide emergency medical care to patients.</p>
+                <p>2. Transport patients to medical facilities.</p>
+                <p>3. Assist in emergency response operations.</p>
+            </div>
+        </div>
+
+        <div class="article">
+            <h3>How to Handle Power Outages Safely</h3>
+            <p>Be prepared for power outages during emergencies.</p>
+            <button onclick="toggleDetails('power-outages-details')">Read More</button>
+            <div id="power-outages-details" class="details">
+                <p>1. Have a flashlight and batteries ready.</p>
+                <p>2. Keep refrigerator and freezer doors closed.</p>
+                <p>3. Unplug electronics to avoid surges when power returns.</p>
+            </div>
+        </div>
+
+        <div class="article">
+            <h3>Staying Informed About Local Hazards</h3>
+            <p>Know what hazards are common in your area.</p>
+            <button onclick="toggleDetails('local-hazards-details')">Read More</button>
+            <div id="local-hazards-details" class="details">
+                <p>1. Research common local hazards like floods or earthquakes.</p>
+                <p>2. Stay updated with local news and alerts.</p>
+                <p>3. Participate in community preparedness activities.</p>
+            </div>
+        </div>
+
+        <div class="article">
+            <h3>Understanding the Importance of Fire Safety</h3>
+            <p>Fire safety can prevent disasters before they happen.</p>
+            <button onclick="toggleDetails('fire-safety-details')">Read More</button>
+            <div id="fire-safety-details" class="details">
+                <p>1. Install smoke detectors and check them regularly.</p>
+                <p>2. Have an escape plan in case of fire.</p>
+                <p>3. Store flammable materials safely.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleDetails(detailId) {
+            const details = document.getElementById(detailId);
+            details.style.display = (details.style.display === 'none' || details.style.display === '') ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

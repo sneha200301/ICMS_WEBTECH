@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Feedback</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: #13293d;
+            color: #fff;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #3e92cc;
+        }
+        form {
+            max-width: 600px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin: 10px 0 5px;
+        }
+        input, select, textarea {
+            padding: 10px;
+            border: 1px solid #3e92cc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            background-color: #ffffff;
+            color: #000;
+        }
+        button {
+            padding: 10px;
+            background-color: #3e92cc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #2f7a9c;
+        }
+    </style>
+</head>
+<body>
+    <h2>User Feedback Form</h2>
+    <form id="feedback-form" action="/submit-feedback" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" required min="1" max="120">
+
+        <label for="service-type">Type of Service Requested:</label>
+        <select id="service-type" required>
+            <option value="">-- Select Service --</option>
+            <option value="Fire">Fire Services</option>
+            <option value="Physical Assistance">Physical Assistance</option>
+            <option value="Disaster Management">Disaster Management</option>
+            <option value="Mental Assistance">Mental Assistance</option>
+        </select>
+
+        <label for="experience">Your Experience:</label>
+        <textarea id="experience" rows="4" required></textarea>
+
+        <label for="improvement">What Needs to Be Improved:</label>
+        <textarea id="improvement" rows="4" required></textarea>
+
+        <label for="rating">Rating (out of 10):</label>
+        <input type="number" id="rating" required min="0" max="10">
+
+        <button type="submit">Submit Feedback</button>
+    </form>
+
+    <script>
+        document.getElementById('feedback-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const feedbackData = {
+                name: document.getElementById('name').value,
+                age: document.getElementById('age').value,
+                serviceType: document.getElementById('service-type').value,
+                experience: document.getElementById('experience').value,
+                improvement: document.getElementById('improvement').value,
+                rating: document.getElementById('rating').value,
+            };
+
+            fetch('/submit-feedback', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(feedbackData),
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert(data);
+                document.getElementById('feedback-form').reset();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>

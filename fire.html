@@ -1,0 +1,213 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fire Services</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: #13293d; /* Dark Blue */
+            color: #fff; /* White text for contrast */
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #3e92cc; /* Light Blue */
+        }
+        #map {
+            width: 100%;
+            height: 450px; /* Height adjusted for better visibility */
+            border: 0;
+        }
+        select {
+            display: block;
+            margin: 20px auto;
+            padding: 10px;
+            font-size: 1.2em;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        #intro-message {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            color: #ffcc00; /* Yellow for contrast */
+        }
+    </style>
+</head>
+<body>
+    <h2>Select a Country for Fire Services</h2>
+    <div id="intro-message">Choose a country from the dropdown menu to view available fire services and their contact information.</div>
+    <select id="country-select" onchange="showFireServices()">
+        <option value="">-- Select Country --</option>
+        <option value="USA">USA</option>
+        <option value="UK">UK</option>
+        <option value="Canada">Canada</option>
+        <option value="Australia">Australia</option>
+        <option value="India">India</option>
+        <option value="Germany">Germany</option>
+        <option value="France">France</option>
+        <option value="Italy">Italy</option>
+        <option value="Spain">Spain</option>
+        <option value="Japan">Japan</option>
+        <option value="South Africa">South Africa</option>
+        <option value="Brazil">Brazil</option>
+        <option value="Mexico">Mexico</option>
+        <option value="Russia">Russia</option>
+    </select>
+
+    <div id="fire-services"></div>
+    <div id="map"></div>
+
+    <script>
+        function showFireServices() {
+            const country = document.getElementById('country-select').value;
+            const servicesDiv = document.getElementById('fire-services');
+            const mapDiv = document.getElementById('map');
+            let servicesHtml = '';
+            let mapSrc = '';
+
+            // Example service data and maps based on the selected country
+            if (country === 'USA') {
+                servicesHtml = `
+                    <h2>Available Fire Services in the USA</h2>
+                    <ul>
+                        <li><strong>New York Fire Department</strong>: (718) 999-2000</li>
+                        <li><strong>Los Angeles Fire Department</strong>: (213) 978-3800</li>
+                        <li><strong>Chicago Fire Department</strong>: (312) 746-6000</li>
+                    </ul>`;
+                mapSrc = `<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d26842204.80219453!2d-119.84560084135099!3d34.78992950488552!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sfire%20departments%20USA!5e0!3m2!1sen!2sin!4v1728837996317!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
+            } else if (country === 'UK') {
+                servicesHtml = `
+                    <h2>Available Fire Services in the UK</h2>
+                    <ul>
+                        <li><strong>London Fire Brigade</strong>: 020 8555 1200</li>
+                        <li><strong>Greater Manchester Fire and Rescue Service</strong>: 0800 555 815</li>
+                        <li><strong>Birmingham Fire Brigade</strong>: 0121 380 7000</li>
+                    </ul>`;
+                mapSrc = `<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d2490804.889885931!2d-3.6336872772677826!3d52.43518565321119!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sfire%20departments%20UK!5e0!3m2!1sen!2sin!4v1728848500774!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
+            } else if (country === 'Canada') {
+                servicesHtml = `
+                    <h2>Available Fire Services in Canada</h2>
+                    <ul>
+                        <li><strong>Toronto Fire Services</strong>: (416) 338-9050</li>
+                        <li><strong>Vancouver Fire and Rescue Services</strong>: (604) 665-6060</li>
+                        <li><strong>Montreal Fire Department</strong>: (514) 872-3800</li>
+                    </ul>`;
+                mapSrc = `<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d25826819.69521096!2d-113.96953570735214!3d54.223535042054634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sfire%20departments%20Canada!5e0!3m2!1sen!2sin!4v1728848501444!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
+            } else if (country === 'Australia') {
+                servicesHtml = `
+                    <h2>Available Fire Services in Australia</h2>
+                    <ul>
+                        <li><strong>New South Wales Fire and Rescue</strong>: (02) 9265 2999</li>
+                        <li><strong>Victoria Metropolitan Fire Brigade</strong>: (03) 9665 4500</li>
+                        <li><strong>Queensland Fire and Emergency Services</strong>: (07) 3635 3500</li>
+                    </ul>`;
+                mapSrc = `<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d26177126.3349569!2d134.0736802111065!3d-25.343219571577558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sfire%20departments%20Australia!5e0!3m2!1sen!2sin!4v1728848502322!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
+            } else if (country === 'India') {
+                servicesHtml = `
+                    <h2>Available Fire Services in India</h2>
+                    <ul>
+                        <li><strong>Mumbai Fire Brigade</strong>: 101</li>
+                        <li><strong>Delhi Fire Service</strong>: 101</li>
+                        <li><strong>Bangalore Fire and Emergency Services</strong>: 101</li>
+                    </ul>`;
+                mapSrc = `<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d14941717.308425164!2d75.93814484558247!3d22.955373024763918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sfire%20departments%20India!5e0!3m2!1sen!2sin!4v1728848503223!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
+            } else if (country === 'Germany') {
+                servicesHtml = `
+                    <h2>Available Fire Services in Germany</h2>
+                    <ul>
+                        <li><strong>Berlin Fire Department</strong>: 112</li>
+                        <li><strong>Hamburg Fire Department</strong>: 112</li>
+                        <li><strong>Munich Fire Department</strong>: 112</li>
+                    </ul>`;
+                mapSrc = `<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d2391908.758436675!2d6.630466799930393!3d51.03258068494919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sfire%20departments%20Germany!5e0!3m2!1sen!2sin!4v1728848504301!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
+            } else if (country === 'France') {
+                servicesHtml = `
+                    <h2>Available Fire Services in France</h2>
+                    <ul>
+                        <li><strong>Paris Fire Brigade</strong>: 18</li>
+                        <li><strong>Marseille Fire Brigade</strong>: 04 91 75 10 00</li>
+                        <li><strong>Lyon Fire Brigade</strong>: 04 72 69 09 40</li>
+                    </ul>`;
+                mapSrc = `<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d1131722.319500452!2d3.9207350867008385!3d46.81105428817454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sfire%20departments%20France!5e0!3m2!1sen!2sin!4v1728848505125!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
+            } else if (country === 'Italy') {
+                servicesHtml = `
+                    <h2>Available Fire Services in Italy</h2>
+                    <ul>
+                        <li><strong>Rome Fire Department</strong>: 115</li>
+                        <li><strong>Milan Fire Department</strong>: 115</li>
+                        <li><strong>Naples Fire Department</strong>: 115</li>
+                    </ul>`;
+                mapSrc = `<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d2231468.3143834306!2d9.327322202748923!3d41.90616461269968!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sfire%20departments%20Italy!5e0!3m2!1sen!2sin!4v1728848506587!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
+            } else if (country === 'Spain') {
+                servicesHtml = `
+                    <h2>Available Fire Services in Spain</h2>
+                    <ul>
+                        <li><strong>Madrid Fire Department</strong>: 112</li>
+                        <li><strong>Barcelona Fire Department</strong>: 112</li>
+                        <li><strong>Valencia Fire Department</strong>: 112</li>
+                    </ul>`;
+                mapSrc = `<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d1519900.1878958398!2d-4.165657456711492!3d40.4700736774227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sfire%20departments%20Spain!5e0!3m2!1sen!2sin!4v1728848507393!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
+            } else if (country === 'Japan') {
+                servicesHtml = `
+                    <h2>Available Fire Services in Japan</h2>
+                    <ul>
+                        <li><strong>Tokyo Fire Department</strong>: 03-3212-2323</li>
+                        <li><strong>Osaka Fire Department</strong>: 06-6260-4311</li>
+                        <li><strong>Nagoya Fire Department</strong>: 052-961-0119</li>
+                    </ul>`;
+                mapSrc = `<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3273700.0973209627!2d136.69779214502535!3d36.47588125740493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sfire%20departments%20Japan!5e0!3m2!1sen!2sin!4v1728848508582!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
+            } else if (country === 'South Africa') {
+                servicesHtml = `
+                    <h2>Available Fire Services in South Africa</h2>
+                    <ul>
+                        <li><strong>Johannesburg Fire Department</strong>: 011-375-5911</li>
+                        <li><strong>Cape Town Fire Department</strong>: 021-480-7700</li>
+                        <li><strong>Durban Fire Department</strong>: 031-361-0000</li>
+                    </ul>`;
+                mapSrc = `<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d1548253.3841683904!2d30.058756091964213!3d-28.50591537539163!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sfire%20departments%20South%20Africa!5e0!3m2!1sen!2sin!4v1728848509621!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
+            } else if (country === 'Brazil') {
+                servicesHtml = `
+                    <h2>Available Fire Services in Brazil</h2>
+                    <ul>
+                        <li><strong>São Paulo Fire Department</strong>: 193</li>
+                        <li><strong>Rio de Janeiro Fire Department</strong>: 193</li>
+                        <li><strong>Belo Horizonte Fire Department</strong>: 193</li>
+                    </ul>`;
+                mapSrc = `<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d1243241.9634693183!2d-51.22185207133778!3d-14.722752194868093!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sfire%20departments%20Brazil!5e0!3m2!1sen!2sin!4v1728850782284!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
+            } else if (country === 'Mexico') {
+                servicesHtml = `
+                    <h2>Available Fire Services in Mexico</h2>
+                    <ul>
+                        <li><strong>Mexico City Fire Department</strong>: 5683-2034</li>
+                        <li><strong>Guadalajara Fire Department</strong>: 3614-1061</li>
+                        <li><strong>Monterrey Fire Department</strong>: 2033-1023</li>
+                    </ul>`;
+                mapSrc = `<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d1091544.5643255056!2d-102.183391!3d23.4541435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sfire%20departments%20Mexico!5e0!3m2!1sen!2sin!4v1728851895372!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
+            } else if (country === 'Russia') {
+                servicesHtml = `
+                    <h2>Available Fire Services in Russia</h2>
+                    <ul>
+                        <li><strong>Moscow Fire Department</strong>: 101</li>
+                        <li><strong>Saint Petersburg Fire Department</strong>: 101</li>
+                        <li><strong>Novosibirsk Fire Department</strong>: 101</li>
+                    </ul>`;
+                mapSrc = `<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d4828803.96819768!2d80.20785330043452!3d55.33435094398127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sfire%20departments%20Russia!5e0!3m2!1sen!2sin!4v1728853082298!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
+            } else {
+                servicesHtml = '';
+                mapSrc = '';
+            }
+
+            servicesDiv.innerHTML = servicesHtml;
+            mapDiv.innerHTML = mapSrc;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physical Assistance Services</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: #13293d; /* Dark Blue */
+            color: #fff; /* White text for contrast */
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #3e92cc; /* Light Blue */
+        }
+        #map {
+            width: 100%;
+            height: 450px; /* Height adjusted for better visibility */
+            border: 0;
+        }
+        select {
+            display: block;
+            margin: 20px auto;
+            padding: 10px;
+            font-size: 1.2em;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        #intro-message {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            color: #ffcc00; /* Yellow for contrast */
+        }
+    </style>
+</head>
+<body>
+    <h2>Select a Country for Physical Assistance Services</h2>
+    <div id="intro-message">Choose a country from the dropdown menu to view available physical assistance services and their contact information.</div>
+    <select id="country-select" onchange="showPhysicalAssistanceServices()">
+        <option value="">-- Select Country --</option>
+        <option value="USA">USA</option>
+        <option value="UK">UK</option>
+        <option value="Canada">Canada</option>
+        <option value="Australia">Australia</option>
+        <option value="India">India</option>
+        <option value="Germany">Germany</option>
+        <option value="France">France</option>
+        <option value="Italy">Italy</option>
+        <option value="Spain">Spain</option>
+        <option value="Japan">Japan</option>
+        <option value="South Africa">South Africa</option>
+        <option value="Brazil">Brazil</option>
+        <option value="Mexico">Mexico</option>
+        <option value="Russia">Russia</option>
+    </select>
+
+    <div id="physical-assistance-services"></div>
+    <div id="map"></div>
+
+    <script>
+        function showPhysicalAssistanceServices() {
+            const country = document.getElementById('country-select').value;
+            const servicesDiv = document.getElementById('physical-assistance-services');
+            const mapDiv = document.getElementById('map');
+            let servicesHtml = '';
+            let mapSrc = '';
+
+            // Example service data and maps based on the selected country
+            if (country === 'USA') {
+                servicesHtml = `
+                    <h2>Available Physical Assistance Services in the USA</h2>
+                    <ul>
+                        <li><strong>American Red Cross</strong>: (800) 733-2767</li>
+                        <li><strong>Salvation Army</strong>: (800) 728-7825</li>
+                        <li><strong>United Way</strong>: (800) 272-4630</li>
+                    </ul>`;
+                mapSrc = `<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d26842204.80219453!2d-119.84560084135099!3d34.78992950488552!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sphysical%20assistance%20USA!5e0!3m2!1sen!2sin!4v1728837996317!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
+            } else if (country === 'UK') {
+                servicesHtml = `
+                    <h2>Available Physical Assistance Services in the UK</h2>
+                    <ul>
+                        <li><strong>British Red Cross</strong>: 0344 871 1111</li>
+                        <li><strong>St John Ambulance</strong>: 0345 222 6999</li>
+                        <li><strong>Crisis</strong>: 0800 008 4637</li>
+                    </ul>`;
+                mapSrc = `<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d2490804.889885931!2d-3.6336872772677826!3d52.43518565321119!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sphysical%20assistance%20UK!5e0!3m2!1sen!2sin!4v1728848500774!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
+            } else if (country === 'Canada') {
+                servicesHtml = `
+                    <h2>Available Physical Assistance Services in Canada</h2>
+                    <ul>
+                        <li><strong>Canadian Red Cross</strong>: (613) 740-1994</li>
+                        <li><strong>St. John Ambulance</strong>: (613) 237-3500</li>
+                        <li><strong>Meals on Wheels</strong>: (416) 481-0449</li>
+                    </ul>`;
+                mapSrc = `<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d25826819.69521096!2d-113.96953570735214!3d54.223535042054634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sphysical%20assistance%20Canada!5e0!3m2!1sen!2sin!4v1728848501444!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
+            } else if (country === 'Australia') {
+                servicesHtml = `
+                    <h2>Available Physical Assistance Services in Australia</h2>
+                    <ul>
+                        <li><strong>Australian Red Cross</strong>: 1300 655 193</li>
+                        <li><strong>Beyond Blue</strong>: 1300 22 4636</li>
+                        <li><strong>Salvation Army</strong>: 13 72 58</li>
+                    </ul>`;
+                mapSrc = `<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d26177126.3349569!2d134.0736802111065!3d-25.343219571577558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sphysical%20assistance%20Australia!5e0!3m2!1sen!2sin!4v1728848502322!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
+            } else if (country === 'India') {
+                servicesHtml = `
+                    <h2>Available Physical Assistance Services in India</h2>
+                    <ul>
+                        <li><strong>National Disaster Response Force</strong>: 011-26105277</li>
+                        <li><strong>Indian Red Cross Society</strong>: 1860 266 2345</li>
+                        <li><strong>Goonj</strong>: 1860 266 6543</li>
+                    </ul>`;
+                mapSrc = `<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d14941717.308425164!2d75.93814484558247!3d22.955373024763918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sphysical%20assistance%20India!5e0!3m2!1sen!2sin!4v1728848503223!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
+            } else if (country === 'Germany') {
+                servicesHtml = `
+                    <h2>Available Physical Assistance Services in Germany</h2>
+                    <ul>
+                        <li><strong>German Red Cross</strong>: 08000 365 000</li>
+                        <li><strong>Johanniter-Unfall-Hilfe</strong>: 0800 000 1000</li>
+                        <li><strong>Malteser Hilfsdienst</strong>: 0180 500 4422</li>
+                    </ul>`;
+                mapSrc = `<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d2541634.2312381144!2d8.103068721130862!3d51.16422918499445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sphysical%20assistance%20Germany!5e0!3m2!1sen!2sin!4v1728853019082!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
+            } else if (country === 'France') {
+                servicesHtml = `
+                    <h2>Available Physical Assistance Services in France</h2>
+                    <ul>
+                        <li><strong>French Red Cross</strong>: 0 800 858 858</li>
+                        <li><strong>Secours Populaire</strong>: 01 40 10 40 00</li>
+                        <li><strong>Secours Catholique</strong>: 01 44 50 26 00</li>
+                    </ul>`;
+                mapSrc = `<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d107722.25529415539!2d2.253218826891087!3d48.85310628064812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sphysical%20assistance%20France!5e0!3m2!1sen!2sin!4v1728853020125!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
+            } else if (country === 'Italy') {
+                servicesHtml = `
+                    <h2>Available Physical Assistance Services in Italy</h2>
+                    <ul>
+                        <li><strong>Italian Red Cross</strong>: 800 860 022</li>
+                        <li><strong>Croce Verde</strong>: 041 242 6420</li>
+                        <li><strong>Emergency Medical Services</strong>: 112</li>
+                    </ul>`;
+                mapSrc = `<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d151184.20087935836!2d12.456750623210693!3d41.9027834998407!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sphysical%20assistance%20Italy!5e0!3m2!1sen!2sin!4v1728853020928!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
+            } else if (country === 'Spain') {
+                servicesHtml = `
+                    <h2>Available Physical Assistance Services in Spain</h2>
+                    <ul>
+                        <li><strong>Cruz Roja Española</strong>: 900 202 112</li>
+                        <li><strong>Protección Civil</strong>: 112</li>
+                        <li><strong>Servicio de Urgencias</strong>: 061</li>
+                    </ul>`;
+                mapSrc = `<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d107640.44807664318!2d-3.6995010141184684!3d40.41677510803724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sphysical%20assistance%20Spain!5e0!3m2!1sen!2sin!4v1728853021728!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
+            } else if (country === 'Japan') {
+                servicesHtml = `
+                    <h2>Available Physical Assistance Services in Japan</h2>
+                    <ul>
+                        <li><strong>Japanese Red Cross</strong>: 03-5280-8686</li>
+                        <li><strong>Tokyo Medical University Hospital</strong>: 03-3342-6111</li>
+                        <li><strong>Tokyo Emergency Medical Center</strong>: 03-5285-8181</li>
+                    </ul>`;
+                mapSrc = `<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d324635.3248187805!2d139.69170653686677!3d35.68948784091768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sphysical%20assistance%20Japan!5e0!3m2!1sen!2sin!4v1728853022638!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
+            } else if (country === 'South Africa') {
+                servicesHtml = `
+                    <h2>Available Physical Assistance Services in South Africa</h2>
+                    <ul>
+                        <li><strong>South African Red Cross</strong>: 021 657 0000</li>
+                        <li><strong>Emergency Services</strong>: 112</li>
+                        <li><strong>Health Department</strong>: 0800 223 222</li>
+                    </ul>`;
+                mapSrc = `<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d2369510.7139943706!2d18.427393274222098!3d-30.559482179956114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sphysical%20assistance%20South%20Africa!5e0!3m2!1sen!2sin!4v1728853023638!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
+            } else if (country === 'Brazil') {
+                servicesHtml = `
+                    <h2>Available Physical Assistance Services in Brazil</h2>
+                    <ul>
+                        <li><strong>Brazilian Red Cross</strong>: 0800 111 949</li>
+                        <li><strong>Hospital de Câncer de Barretos</strong>: 17 3321 1600</li>
+                        <li><strong>Serviço de Atendimento Móvel de Urgência (SAMU)</strong>: 192</li>
+                    </ul>`;
+                mapSrc = `<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d1748820.1576708318!2d-54.947103346132515!3d-10.538932113814195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sphysical%20assistance%20Brazil!5e0!3m2!1sen!2sin!4v1728853024549!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
+            } else if (country === 'Mexico') {
+                servicesHtml = `
+                    <h2>Available Physical Assistance Services in Mexico</h2>
+                    <ul>
+                        <li><strong>Mexican Red Cross</strong>: 800 822 3737</li>
+                        <li><strong>Centro Nacional de Prevención de Desastres</strong>: 800 733 7666</li>
+                        <li><strong>Servicios de Salud Pública</strong>: 800 822 3737</li>
+                    </ul>`;
+                mapSrc = `<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d1186834.9647692648!2d-102.55278441362665!3d23.634501479599073!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sphysical%20assistance%20Mexico!5e0!3m2!1sen!2sin!4v1728853025458!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
+            } else if (country === 'Russia') {
+                servicesHtml = `
+                    <h2>Available Physical Assistance Services in Russia</h2>
+                    <ul>
+                        <li><strong>Russian Red Cross</strong>: 8 800 200 1611</li>
+                        <li><strong>Emergency Medical Services</strong>: 03</li>
+                        <li><strong>Служба спасения</strong>: 112</li>
+                    </ul>`;
+                mapSrc = `<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d186048.08651241396!2d37.6176733757039!3d55.75582633628352!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sphysical%20assistance%20Russia!5e0!3m2!1sen!2sin!4v1728853026313!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
+            }
+
+            servicesDiv.innerHTML = servicesHtml;
+            mapDiv.innerHTML = mapSrc;
+        }
+    </script>
+</body>
+</html>
+
